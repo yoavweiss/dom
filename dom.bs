@@ -8770,7 +8770,7 @@ method, when invoked, must run these steps:
  {{InvalidCharacterError}} exception.
 
  <li><p>For each <var>token</var> in <var>tokens</var>, in given order, that is not in
- <a>tokens</a>, run <a>validation</a> with <var>token</var>. If the return value is true,
+ <a>tokens</a>, run <a>validate</a> with <var>token</var>. If the return value is true,
  append <var>token</var> to <a>tokens</a>.
 
  <li><p>Run the <a>update steps</a>.
@@ -8817,7 +8817,7 @@ method, when invoked, must run these steps:
   <ol>
    <li><p>If <var>force</var> is passed and is false, return false.
 
-   <li><p>Run <a>validation</a> with <var>token</var>. If the return value is false, return false.
+   <li><p>Run <a>validate</a> with <var>token</var>. If the return value is false, return false.
 
    <li><p>Otherwise, append <var>token</var> to <a>tokens</a>, run the <a>update steps</a>, and
    return true.
