@@ -4634,15 +4634,15 @@ a <var>document</var>, run these steps:
 <ol>
  <li><p>Let <var>oldDocument</var> be <var>node</var>'s <a>node document</a>.
 
- <li><p>If <var>node</var>'s <a>parent</a> is not null, <a>remove</a> <var>node</var> from its
- <a>parent</a>.
+<li><p>If <var>node</var>'s <a>parent</a> is not null, <a>remove</a> <var>node</var> from its
+<a>parent</a>.
 
- <li><p>For each <var>descendant</var> in <var>node</var>'s <a>inclusive descendants</a>, in
- <a>tree order</a>, set <var>descendant</var>'s <a>node document</a> to <var>document</var>.
- <!--AttrExodus as well as any associated {{Attr}} nodes-->
+<li><p>For each <var>descendant</var> in <var>node</var>'s <a>inclusive descendants</a>, in
+<a>tree order</a>, set <var>descendant</var>'s <a>node document</a> to <var>document</var>.
+<!--AttrExodus as well as any associated {{Attr}} nodes-->
 
- <li><p>For each <var>descendant</var> in <var>node</var>'s <a>inclusive descendants</a>, in
- <a>tree order</a>, run the <a>adopting steps</a> with <var>descendant</var> and
+<li><p>For each <var>descendant</var> in <var>node</var>'s <a>inclusive descendants</a>, in
+<a>tree order</a>, run the <a>adopting steps</a> with <var>descendant</var> and
  <var>oldDocument</var>.
 </ol>
 
@@ -8673,6 +8673,11 @@ interface DOMTokenList {
 };
 </pre>
 
+<a lt="Other applicable specifications">Specifications</a> may define
+<dfn export for=Node id=concept-domtokenlist-validation>validation algorithms</dfn> for all or some
+<a>tokens</a>. The algorithm is passed <var>token</var>, as indicated in the
+<a>validate</a> algorithm. When not defined by Specification, the validation algorithm returns true.
+
 <p>A {{DOMTokenList}} object has an associated ordered set of
 <dfn export id=concept-dtl-tokens for="DOMTokenList">tokens</dfn>, which is initially empty.
 
@@ -8702,14 +8707,15 @@ interface DOMTokenList {
 
  <dt><code><var>tokenlist</var> . <a for=DOMTokenList lt="add()">add(<var>tokens</var>&hellip;)</a></code>
  <dd>
-  <p>Adds all arguments passed, except those already present.
+  <p>Adds all valid arguments passed, except those already present.
   <p>Throws a {{SyntaxError}} exception if one if the arguments is the empty string.
   <p>Throws an {{InvalidCharacterError}} exception if one of the arguments contains any
   <a>ASCII whitespace</a>.
+  <p>Returns false if any invalid arguments passed, true otherwise.
 
  <dt><code><var>tokenlist</var> . <a for=DOMTokenList lt="remove()">remove(<var>tokens</var>&hellip;)</a></code>
  <dd>
-  <p>Removes arguments passed, if they are present.
+  <p>Removes valid arguments passed, if they are present.
   <p>Throws a {{SyntaxError}} exception if one if the arguments is the empty string.
   <p>Throws an {{InvalidCharacterError}} exception if one of the arguments contains any
   <a>ASCII whitespace</a>.
@@ -8717,7 +8723,7 @@ interface DOMTokenList {
  <dt><code><var>tokenlist</var> . <a method for=DOMTokenList lt="toggle()">toggle(<var>token</var> [, <var>force</var>])</a></code>
  <dd>
   <p>If <var>force</var> is not given, "toggles" <var>token</var>, removing it if it's present and
-  adding it if it's not. If <var>force</var> is true, adds <var>token</var> (same as {{add()}}). If
+  adding it if it's not present as well as valid. If <var>force</var> is true, adds <var>token</var> if it is valid (same as {{add()}}). If
   <var>force</var> is false, removes <var>token</var> (same as {{DOMTokenList/remove()}}).
   <p>Returns true if <var>token</var> is now present, and false otherwise.
   <p>Throws a {{SyntaxError}} exception if <var>token</var> is empty.
@@ -8764,7 +8770,8 @@ method, when invoked, must run these steps:
  {{InvalidCharacterError}} exception.
 
  <li><p>For each <var>token</var> in <var>tokens</var>, in given order, that is not in
- <a>tokens</a>, append <var>token</var> to <a>tokens</a>.
+ <a>tokens</a>, run <a>validation</a> with <var>token</var>. If the return value is true,
+ append <var>token</var> to <a>tokens</a>.
 
  <li><p>Run the <a>update steps</a>.
 </ol>
@@ -8809,6 +8816,8 @@ method, when invoked, must run these steps:
 
   <ol>
    <li><p>If <var>force</var> is passed and is false, return false.
+
+   <li><p>Run <a>validation</a> with <var>token</var>. If the return value is false, return false.
 
    <li><p>Otherwise, append <var>token</var> to <a>tokens</a>, run the <a>update steps</a>, and
    return true.
