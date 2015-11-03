@@ -4051,13 +4051,13 @@ constants for the <a data-link-type="dfn" href="#concept-traversal-whattoshow">w
      <p>Returns false if any invalid arguments passed, true otherwise. </p>
     <dt><code><var>tokenlist</var> . <a data-link-type="functionish" href="#dom-domtokenlist-remove">remove(<var>tokens</var>…)</a></code> 
     <dd>
-     <p>Removes valid arguments passed, if they are present. </p>
+     <p>Removes arguments passed, if they are present. </p>
      <p>Throws a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#syntaxerror">SyntaxError</a></code> exception if one if the arguments is the empty string. </p>
      <p>Throws an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidcharactererror">InvalidCharacterError</a></code> exception if one of the arguments contains any <a data-link-type="dfn" href="https://encoding.spec.whatwg.org/#ascii-whitespace">ASCII whitespace</a>. </p>
     <dt><code><var>tokenlist</var> . <a class="idl-code" data-link-type="method" href="#dom-domtokenlist-toggle">toggle(<var>token</var> [, <var>force</var>])</a></code> 
     <dd>
      <p>If <var>force</var> is not given, "toggles" <var>token</var>, removing it if it’s present and
-  adding it if it’s not present as well as valid. If <var>force</var> is true, adds <var>token</var> if it is valid (same as <code class="idl"><a data-link-type="idl" href="#dom-domtokenlist-add">add()</a></code>). If <var>force</var> is false, removes <var>token</var> (same as <code class="idl"><a data-link-type="idl" href="#dom-domtokenlist-remove">remove()</a></code>). </p>
+  adding it if it’s not. If <var>force</var> is true, adds <var>token</var> (same as <code class="idl"><a data-link-type="idl" href="#dom-domtokenlist-add">add()</a></code>). If <var>force</var> is false, removes <var>token</var> (same as <code class="idl"><a data-link-type="idl" href="#dom-domtokenlist-remove">remove()</a></code>). </p>
      <p>Returns true if <var>token</var> is now present, and false otherwise. </p>
      <p>Throws a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#syntaxerror">SyntaxError</a></code> exception if <var>token</var> is empty. </p>
      <p>Throws an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidcharactererror">InvalidCharacterError</a></code> exception if <var>token</var> contains any spaces. </p>

@@ -4634,15 +4634,15 @@ a <var>document</var>, run these steps:
 <ol>
  <li><p>Let <var>oldDocument</var> be <var>node</var>'s <a>node document</a>.
 
-<li><p>If <var>node</var>'s <a>parent</a> is not null, <a>remove</a> <var>node</var> from its
-<a>parent</a>.
+ <li><p>If <var>node</var>'s <a>parent</a> is not null, <a>remove</a> <var>node</var> from its
+ <a>parent</a>.
 
-<li><p>For each <var>descendant</var> in <var>node</var>'s <a>inclusive descendants</a>, in
-<a>tree order</a>, set <var>descendant</var>'s <a>node document</a> to <var>document</var>.
-<!--AttrExodus as well as any associated {{Attr}} nodes-->
+ <li><p>For each <var>descendant</var> in <var>node</var>'s <a>inclusive descendants</a>, in
+ <a>tree order</a>, set <var>descendant</var>'s <a>node document</a> to <var>document</var>.
+ <!--AttrExodus as well as any associated {{Attr}} nodes-->
 
-<li><p>For each <var>descendant</var> in <var>node</var>'s <a>inclusive descendants</a>, in
-<a>tree order</a>, run the <a>adopting steps</a> with <var>descendant</var> and
+ <li><p>For each <var>descendant</var> in <var>node</var>'s <a>inclusive descendants</a>, in
+ <a>tree order</a>, run the <a>adopting steps</a> with <var>descendant</var> and
  <var>oldDocument</var>.
 </ol>
 
@@ -8715,7 +8715,7 @@ interface DOMTokenList {
 
  <dt><code><var>tokenlist</var> . <a for=DOMTokenList lt="remove()">remove(<var>tokens</var>&hellip;)</a></code>
  <dd>
-  <p>Removes valid arguments passed, if they are present.
+  <p>Removes arguments passed, if they are present.
   <p>Throws a {{SyntaxError}} exception if one if the arguments is the empty string.
   <p>Throws an {{InvalidCharacterError}} exception if one of the arguments contains any
   <a>ASCII whitespace</a>.
@@ -8723,7 +8723,7 @@ interface DOMTokenList {
  <dt><code><var>tokenlist</var> . <a method for=DOMTokenList lt="toggle()">toggle(<var>token</var> [, <var>force</var>])</a></code>
  <dd>
   <p>If <var>force</var> is not given, "toggles" <var>token</var>, removing it if it's present and
-  adding it if it's not present as well as valid. If <var>force</var> is true, adds <var>token</var> if it is valid (same as {{add()}}). If
+  adding it if it's not. If <var>force</var> is true, adds <var>token</var> (same as {{add()}}). If
   <var>force</var> is false, removes <var>token</var> (same as {{DOMTokenList/remove()}}).
   <p>Returns true if <var>token</var> is now present, and false otherwise.
   <p>Throws a {{SyntaxError}} exception if <var>token</var> is empty.
