@@ -4026,7 +4026,7 @@ constants for the <a data-link-type="dfn" href="#concept-traversal-whattoshow">w
   iterable&lt;DOMString>;
 };
 </pre>
-   <p><a data-link-type="dfn" href="#other-applicable-specifications">Specifications</a> may define <dfn data-dfn-for="Node" data-dfn-type="dfn" data-export="" id="concept-domtokenlist-validation">validation algorithms<a class="self-link" href="#concept-domtokenlist-validation"></a></dfn> for all or some <a data-link-type="dfn" href="#concept-dtl-tokens">tokens</a>. The algorithm is passed <var>token</var>, as indicated in the <a data-link-type="dfn" href="#validate">validate</a> algorithm. When not defined by Specification, the validation algorithm returns true.</p>
+   <p><a data-link-type="dfn" href="#other-applicable-specifications">Specifications</a> may define <dfn data-dfn-for="Node" data-dfn-type="dfn" data-export="" id="concept-domtokenlist-validation">validation algorithms<a class="self-link" href="#concept-domtokenlist-validation"></a></dfn> for all or some <a data-link-type="dfn" href="#concept-dtl-tokens">tokens</a>. The algorithm is passed <var>token</var>, as indicated in <a data-link-type="dfn" href="#concept-domtokenlist-validation">validation algorithms</a>. When not defined by Specification, the validation algorithm returns true.</p>
    <p>A <code class="idl"><a data-link-type="idl" href="#domtokenlist">DOMTokenList</a></code> object has an associated ordered set of <dfn data-dfn-for="DOMTokenList" data-dfn-type="dfn" data-export="" id="concept-dtl-tokens">tokens<a class="self-link" href="#concept-dtl-tokens"></a></dfn>, which is initially empty. </p>
    <p>A <code class="idl"><a data-link-type="idl" href="#domtokenlist">DOMTokenList</a></code> object also has an associated <a data-link-type="dfn" href="#concept-element">element</a> and an <a data-link-type="dfn" href="#concept-attribute">attribute</a>’s <a data-link-type="dfn" href="#concept-attribute-local-name">local name</a>. </p>
    <p>A <code class="idl"><a data-link-type="idl" href="#domtokenlist">DOMTokenList</a></code> object’s <dfn data-dfn-for="DOMTokenList" data-dfn-type="dfn" data-export="" id="concept-dtl-update">update steps<a class="self-link" href="#concept-dtl-update"></a></dfn> are to <a data-link-type="dfn" href="#concept-element-attributes-set-value">set an attribute value</a> for the associated <a data-link-type="dfn" href="#concept-element">element</a> using associated <a data-link-type="dfn" href="#concept-attribute">attribute</a>’s <a data-link-type="dfn" href="#concept-attribute-local-name">local name</a> and the result of running the <a data-link-type="dfn" href="#concept-ordered-set-serializer">ordered set serializer</a> for <a data-link-type="dfn" href="#concept-dtl-tokens">tokens</a>. </p>
@@ -4092,8 +4092,11 @@ invoked, must run these steps: </p>
     <li>
      <p>If one of <var>tokens</var> contains any <a data-link-type="dfn" href="https://encoding.spec.whatwg.org/#ascii-whitespace">ASCII whitespace</a>, then <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-throw">throw</a> an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidcharactererror">InvalidCharacterError</a></code> exception. </p>
     <li>
-     <p>For each <var>token</var> in <var>tokens</var>, in given order, that is not in <a data-link-type="dfn" href="#concept-dtl-tokens">tokens</a>, run <a data-link-type="dfn" href="#validate">validate</a> with <var>token</var>. If the return value is true,
- append <var>token</var> to <a data-link-type="dfn" href="#concept-dtl-tokens">tokens</a>. </p>
+     <p>For each <var>token</var> in <var>tokens</var>, in given order, that is not in <a data-link-type="dfn" href="#concept-dtl-tokens">tokens</a>: </p>
+     <ol>
+      <li>Append <var>token</var> to <a data-link-type="dfn" href="#concept-dtl-tokens">tokens</a>. 
+      <li>Run <a data-link-type="dfn" href="#concept-domtokenlist-validation">validation algorithms</a> with <var>token</var>. Return the return value. 
+     </ol>
     <li>
      <p>Run the <a data-link-type="dfn" href="#concept-dtl-update">update steps</a>. </p>
    </ol>
@@ -4127,8 +4130,6 @@ invoked, must run these steps: </p>
      <ol>
       <li>
        <p>If <var>force</var> is passed and is false, return false. </p>
-      <li>
-       <p>Run <a data-link-type="dfn" href="#validate">validate</a> with <var>token</var>. If the return value is false, return false. </p>
       <li>
        <p>Otherwise, append <var>token</var> to <a data-link-type="dfn" href="#concept-dtl-tokens">tokens</a>, run the <a data-link-type="dfn" href="#concept-dtl-update">update steps</a>, and
    return true. </p>
