@@ -8707,7 +8707,7 @@ interface DOMTokenList {
 
  <dt><code><var>tokenlist</var> . <a for=DOMTokenList lt="add()">add(<var>tokens</var>&hellip;)</a></code>
  <dd>
-  <p>Adds all valid arguments passed, except those already present.
+  <p>Adds all arguments passed, except those already present.
   <p>Throws a {{SyntaxError}} exception if one if the arguments is the empty string.
   <p>Throws an {{InvalidCharacterError}} exception if one of the arguments contains any
   <a>ASCII whitespace</a>.
@@ -8769,10 +8769,10 @@ method, when invoked, must run these steps:
  <li><p>If one of <var>tokens</var> contains any <a>ASCII whitespace</a>, then <a>throw</a> an
  {{InvalidCharacterError}} exception.
 
- <li>Define <var>valid</var> and initialize it to true.
+ <li>Let <var>valid</var> be true.
 
  <li><p>For each <var>token</var> in <var>tokens</var>, in given order, that is not in
- <a>tokens</a>: 
+ <a>tokens</a>:
   <ol>
    <li>Append <var>token</var> to <a>tokens</a>.
 
@@ -8781,7 +8781,7 @@ method, when invoked, must run these steps:
 
  <li><p>Run the <a>update steps</a>.
 
- <li><p>Return <var>valid</var>
+ <li><p>Return <var>valid</var>.
 </ol>
 
 <p>The

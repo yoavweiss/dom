@@ -4045,7 +4045,7 @@ constants for the <a data-link-type="dfn" href="#concept-traversal-whattoshow">w
      <p>Throws an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidcharactererror">InvalidCharacterError</a></code> exception if <var>token</var> contains any <a data-link-type="dfn" href="https://encoding.spec.whatwg.org/#ascii-whitespace">ASCII whitespace</a>. </p>
     <dt><code><var>tokenlist</var> . <a data-link-type="functionish" href="#dom-domtokenlist-add">add(<var>tokens</var>…)</a></code> 
     <dd>
-     <p>Adds all valid arguments passed, except those already present. </p>
+     <p>Adds all arguments passed, except those already present. </p>
      <p>Throws a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#syntaxerror">SyntaxError</a></code> exception if one if the arguments is the empty string. </p>
      <p>Throws an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidcharactererror">InvalidCharacterError</a></code> exception if one of the arguments contains any <a data-link-type="dfn" href="https://encoding.spec.whatwg.org/#ascii-whitespace">ASCII whitespace</a>. </p>
      <p>Returns false if any invalid arguments passed, true otherwise. </p>
@@ -4091,7 +4091,7 @@ invoked, must run these steps: </p>
      <p>If one of <var>tokens</var> is the empty string, <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-throw">throw</a> a <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#syntaxerror">SyntaxError</a></code> exception. </p>
     <li>
      <p>If one of <var>tokens</var> contains any <a data-link-type="dfn" href="https://encoding.spec.whatwg.org/#ascii-whitespace">ASCII whitespace</a>, then <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-throw">throw</a> an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidcharactererror">InvalidCharacterError</a></code> exception. </p>
-    <li>Define <var>valid</var> and initialize it to true. 
+    <li>Let <var>valid</var> be true. 
     <li>
      <p>For each <var>token</var> in <var>tokens</var>, in given order, that is not in <a data-link-type="dfn" href="#concept-dtl-tokens">tokens</a>: </p>
      <ol>
@@ -4101,7 +4101,7 @@ invoked, must run these steps: </p>
     <li>
      <p>Run the <a data-link-type="dfn" href="#concept-dtl-update">update steps</a>. </p>
     <li>
-     <p>Return <var>valid</var> </p>
+     <p>Return <var>valid</var>. </p>
    </ol>
    <p>The <dfn class="idl-code" data-dfn-for="DOMTokenList" data-dfn-type="method" data-export="" data-lt="remove(tokens)|remove()" id="dom-domtokenlist-remove"><code>remove(<var>tokens</var>…)</code><a class="self-link" href="#dom-domtokenlist-remove"></a></dfn> method, when invoked, must run these steps: </p>
    <ol>
