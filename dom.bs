@@ -8673,16 +8673,22 @@ interface DOMTokenList {
 };
 </pre>
 
-<a lt="Other applicable specifications">Specifications</a> may define
-<dfn export for=Node id=concept-domtokenlist-validation>validation algorithms</dfn> for all or some
-<a>tokens</a>. The algorithm is passed <var>token</var>, as indicated in
-<a>validation algorithms</a>. When not defined by Specification, the validation algorithm returns true.
-
 <p>A {{DOMTokenList}} object has an associated ordered set of
 <dfn export id=concept-dtl-tokens for="DOMTokenList">tokens</dfn>, which is initially empty.
 
 <p>A {{DOMTokenList}} object also has an associated <a for="/">element</a> and an <a>attribute</a>'s
 <a for=Attr>local name</a>.
+
+<a lt="Other applicable specifications">Specifications</a> may define
+<dfn export for=Node id=concept-supported-keywords>supported keywords</dfn> for a {{DOMTokenList}}'s associated attribute.
+
+<p>A {{DOMTokenList}} object's
+<dfn export id=concept-domtokenlist-validation for="DOMString">validation steps</dfn> for a given <var>token</var> are:
+<ol>
+ <li><p>If the associated attribute does not define <a>supported keywords</a>, return true.
+ <li><p>If <token> is present in <a>supported keywords</a>, return true.
+ <li><p>Return false.
+</ol>
 
 <p>A {{DOMTokenList}} object's
 <dfn export id=concept-dtl-update for="DOMTokenList">update steps</dfn> are to
@@ -8776,7 +8782,7 @@ method, when invoked, must run these steps:
   <ol>
    <li>Append <var>token</var> to <a>tokens</a>.
 
-   <li>Run <a>validation algorithms</a> with <var>token</var>. If the return value is false, set <var>valid</var> to false.
+   <li>Run <a>validation steps</a> with <var>token</var>. If the return value is false, set <var>valid</var> to false.
   </ol>
 
  <li><p>Run the <a>update steps</a>.
